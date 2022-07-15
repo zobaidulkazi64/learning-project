@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 500px;
+            height: 500px;
+            background-color: #ddd;
+            border: 2px solid red;
+            margin: 0 auto;
+        }
+
+        .from-1 {
+            margin: auto;
+            display: block;
+            padding: 30px;
+
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="container">
+        <h1>From Submit</h1>
+        <div class="from-1">
+            <form action="/contact" method="post">
+               <div>
+               
+                <input type="text" name="title" id="title" placeholder="Name" />
+                <br /><br /><br />
+               <input type="description" id="description" placeholder="description"/>
+               <br /><br />
+               </div>
+
+               <div>
+                <input type="text" name="option1" placeholder="Option-1" />
+                <br /><br /><br />
+                <input type="text" name="option2" placeholder="Option-2" />
+                <br /><br /><br />
+               <button id="addOption">Add More Option</button>
+               <br /> <br /> <br />
+               </div>
+
+               <input type="submit" value="Creat Poll" />
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <script>
+       
+       let options = document.getElementById('options')
+       let addOption = document.getElementById('addOption')
+
+
+       let currentOptionNumber = 3
+
+       addOption.addEventListener('click', function(e) {
+        e.preventDefault()
+        let option = createNewOption()
+        options.appendChild(option)
+
+       })
+
+       function createNewOption() {
+        let div = document.createElement('div')
+        div.className = 'from-group'
+
+
+        let input = document.createElement('input')
+        input.type = 'text'
+        input.name = 'option' + currentOptionNumber
+        input.placeholder = 'Option' + currentOptionNumber++
+        input.className = 'from-control'
+
+
+
+        div.appendChild(input)
+        return div
+
+       }
+
+
+    </script>
+    
+</body>
+</html>
